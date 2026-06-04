@@ -1,0 +1,33 @@
+print("🤖 AI Recommendation System")
+print("-" * 30)
+
+items = {
+    "technology": ["Python Programming", "AI Basics", "Machine Learning"],
+    "sports": ["Football Highlights", "Cricket Strategies", "Basketball Training"],
+    "music": ["Pop Playlist", "Classical Collection", "Rock Hits"],
+    "movies": ["Interstellar", "Inception", "The Martian"],
+    "books": ["Atomic Habits", "The Alchemist", "Rich Dad Poor Dad"]
+}
+
+user_input = input(
+    "Enter your interests (separate multiple interests with commas): "
+).lower()
+
+interests = [interest.strip() for interest in user_input.split(",")]
+
+recommendations = []
+
+for interest in interests:
+    for category in items:
+        if interest in category:
+            recommendations.extend(items[category])
+
+print("\n🔍 Analyzing your preferences...")
+
+if recommendations:
+    print("\n✅ Recommended for You:")
+    for i, item in enumerate(set(recommendations), start=1):
+        print(f"{i}. {item}")
+else:
+    print("\n❌ No recommendations found.")
+    print("Try: technology, sports, music, movies, or books")
